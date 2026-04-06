@@ -130,11 +130,10 @@ module.exports = function(eleventyConfig) {
   return {
     dir: {
       input: "src",
-      output: "docs",
+      output: "_site",
       includes: "_includes",
       data: "_data"
     },
-    pathPrefix: "/danielidrissa-blog/",
     templateFormats: ["md", "njk", "html"],
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
