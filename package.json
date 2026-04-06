@@ -5,14 +5,20 @@
   "scripts": {
     "build": "npx @11ty/eleventy",
     "start": "npx @11ty/eleventy --serve --watch",
+    "admin": "npx http-server ./admin -p 8081",
     "debug": "DEBUG=* npx @11ty/eleventy"
   },
-  "keywords": ["blog", "eleventy", "11ty"],
+  "keywords": [
+    "blog",
+    "eleventy",
+    "11ty"
+  ],
   "author": "Daniel Idrissa",
   "license": "MIT",
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "@11ty/eleventy-img": "^4.0.0"
+    "@11ty/eleventy-img": "^4.0.0",
+    "http-server": "^14.1.1"
   },
   "dependencies": {
     "eleventy-plugin-youtube-embed": "^1.11.0"
