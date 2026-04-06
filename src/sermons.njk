@@ -1,0 +1,51 @@
+---
+layout: layouts/base.njk
+title: Sermons
+description: Messages and teachings from Daniel Idrissa
+pagination:
+  data: collections.sermons
+  size: 10
+  alias: sermons
+---
+
+<div class="container">
+  <header class="page-header">
+    <h1 class="page-title">{{ title }}</h1>
+    <p class="page-description">{{ description }}</p>
+  </header>
+
+  <div class="content-grid">
+    {% for sermon in sermons %}
+    <article class="content-card">
+      <div class="content-card-body">
+        <div class="content-card-meta">
+          <time datetime="{{ sermon.date | htmlDateString }}">{{ sermon.date | readableDate }}</time>
+          {% if sermon.data.speaker %}
+          <span>• {{ sermon.data.speaker }}</span>
+          {% endif %}
+        </div>
+        <h2 class="content-card-title">
+          <a href="{{ sermon.url }}">{{ sermon.data.title }}</a>
+        </h2>
+        {% if sermon.data.topic %}
+        <p class="content-card-meta">Topic: {{ sermon.data.topic }}</p>
+        {% endif %}
+        {% if sermon.data.description %}
+        <p class="content-card-excerpt">{{ sermon.data.description }}</p>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+
+  {% if pagination.pages.length > 1 %}
+  <nav class="pagination" aria-label="Pagination">
+    {% if pagination.previousPageHref %}
+    <a href="{{ pagination.previousPageHref }}" class="pagination-link">← Previous</a>
+    {% endif %}
+    {% if pagination.nextPageHref %}
+    <a href="{{ pagination.nextPageHref }}" class="pagination-link">Next →</a>
+    {% endif %}
+  </nav>
+  {% endif %}
+</div>

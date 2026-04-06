@@ -1,0 +1,38 @@
+---
+layout: layouts/base.njk
+title: Videos
+description: Teaching videos, interviews, and media presentations
+---
+
+<div class="container">
+  <header class="page-header">
+    <h1 class="page-title">{{ title }}</h1>
+    <p class="page-description">{{ description }}</p>
+  </header>
+
+  <div class="content-grid">
+    {% for item in collections.videos %}
+    <article class="content-card">
+      {% if item.data.youtubeId %}
+      <div class="content-card-image">
+        <img src="https://img.youtube.com/vi/{{ item.data.youtubeId }}/mqdefault.jpg" alt="{{ item.data.title }} Thumbnail">
+      </div>
+      {% endif %}
+      <div class="content-card-body">
+        <div class="content-card-meta">
+          <time datetime="{{ item.date | htmlDateString }}">{{ item.date | readableDate }}</time>
+          {% if item.data.duration %}
+          <span>• {{ item.data.duration }}</span>
+          {% endif %}
+        </div>
+        <h2 class="content-card-title">
+          <a href="{{ item.url }}">{{ item.data.title }}</a>
+        </h2>
+        {% if item.data.description %}
+        <p class="content-card-excerpt">{{ item.data.description }}</p>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</div>

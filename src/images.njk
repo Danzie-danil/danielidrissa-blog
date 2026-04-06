@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+title: Images
+description: Photo galleries and visual journals
+---
+
+<div class="container">
+  <header class="page-header">
+    <h1 class="page-title">{{ title }}</h1>
+    <p class="page-description">{{ description }}</p>
+  </header>
+
+  <div class="content-grid">
+    {% for item in collections.images %}
+    <article class="content-card">
+      <div class="content-card-body">
+        <div class="content-card-meta">
+          <time datetime="{{ item.date | htmlDateString }}">{{ item.date | readableDate }}</time>
+          {% if item.data.location %}
+          <span>• {{ item.data.location }}</span>
+          {% endif %}
+        </div>
+        <h2 class="content-card-title">
+          <a href="{{ item.url }}">{{ item.data.title }}</a>
+        </h2>
+        {% if item.data.description %}
+        <p class="content-card-excerpt">{{ item.data.description }}</p>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</div>

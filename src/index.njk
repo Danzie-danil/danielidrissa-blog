@@ -1,0 +1,65 @@
+---
+layout: layouts/base.njk
+title: Home
+description: Official website of Daniel Idrissa - Sermons, Media, and Resources
+---
+
+<div class="container">
+  <div class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">The word for <span class="text-accent">modern</span> believers.</h1>
+      <p class="hero-subtitle">Thoughts, sermons, and media from Daniel Idrissa, centralized into one clear view of faith and life.</p>
+      <div class="hero-actions">
+        <a href="/sermons/" class="btn btn-primary">Start Listening</a>
+        <a href="/about/" class="btn btn-secondary">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-gradient-box"></div>
+    </div>
+  </div>
+
+  <section class="section-container">
+    <div class="section-header">
+      <h2 class="section-title">Latest Sermons</h2>
+      <a href="/sermons/" class="text-link">View all →</a>
+    </div>
+    <div class="content-grid">
+      {% for sermon in collections.sermons | limit(3) %}
+      <article class="content-card">
+        <div class="content-card-body">
+          <div class="content-card-meta">
+            <time datetime="{{ sermon.date | htmlDateString }}">{{ sermon.date | readableDate }}</time>
+          </div>
+          <h3 class="content-card-title">
+            <a href="{{ sermon.url }}">{{ sermon.data.title }}</a>
+          </h3>
+          <p class="content-card-excerpt">{{ sermon.data.description }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="section-container">
+    <div class="section-header">
+      <h2 class="section-title">Morning Devotionals</h2>
+      <a href="/audio/" class="text-link">View all →</a>
+    </div>
+    <div class="content-grid">
+      {% for item in collections.audio | limit(3) %}
+      <article class="content-card">
+        <div class="content-card-body">
+          <div class="content-card-meta">
+            <time datetime="{{ item.date | htmlDateString }}">{{ item.date | readableDate }}</time>
+          </div>
+          <h3 class="content-card-title">
+            <a href="{{ item.url }}">{{ item.data.title }}</a>
+          </h3>
+          <p class="content-card-excerpt">{{ item.data.description }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+</div>

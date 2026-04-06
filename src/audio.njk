@@ -1,0 +1,38 @@
+---
+layout: layouts/base.njk
+title: Audio
+description: Podcasts, devotionals, and audio teachings
+---
+
+<div class="container">
+  <header class="page-header">
+    <h1 class="page-title">{{ title }}</h1>
+    <p class="page-description">{{ description }}</p>
+  </header>
+
+  <div class="content-grid">
+    {% for item in collections.audio %}
+    <article class="content-card">
+      <div class="content-card-body">
+        <div class="content-card-meta">
+          <time datetime="{{ item.date | htmlDateString }}">{{ item.date | readableDate }}</time>
+          {% if item.data.duration %}
+          <span>• {{ item.data.duration }}</span>
+          {% endif %}
+        </div>
+        <h2 class="content-card-title">
+          <a href="{{ item.url }}">{{ item.data.title }}</a>
+        </h2>
+        {% if item.data.description %}
+        <p class="content-card-excerpt">{{ item.data.description }}</p>
+        {% endif %}
+        {% if item.data.audioFile %}
+        <audio controls style="width: 100%; margin-top: 1rem;">
+          <source src="{{ item.data.audioFile }}" type="audio/mpeg">
+        </audio>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</div>
