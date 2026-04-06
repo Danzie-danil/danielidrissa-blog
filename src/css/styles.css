@@ -28,7 +28,6 @@
   /* Layout */
   --container-max: 1280px; /* Wider container */
   --header-height: 80px;   /* Taller header */
-  --sticky-nav-height: 64px;
   
   /* Shapes */
   --radius-lg: 24px;
@@ -115,11 +114,19 @@ a:hover {
    ───────────────────────────────────────── */
 
 .main-header {
-  background-color: var(--color-background);
+  background-color: rgba(251, 251, 251, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
   height: var(--header-height);
-  position: relative;
-  z-index: 50;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.main-header:hover {
+  background-color: var(--color-background);
 }
 
 .header-container {
@@ -149,20 +156,27 @@ a:hover {
 .main-nav {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: var(--space-xs);
 }
 
 .nav-link {
   font-weight: 600;
   color: var(--color-text);
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.85rem;
   border-radius: 100px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
 }
 
 .nav-link:hover {
   background-color: var(--color-border);
   color: var(--color-primary);
+}
+
+.nav-link.is-active {
+  color: var(--color-accent);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Quick Actions */
@@ -197,78 +211,14 @@ a:hover {
   color: var(--color-text);
 }
 
-/* ─────────────────────────────────────────
-   STICKY SUB-NAVIGATION
-   ───────────────────────────────────────── */
-
-.sticky-nav {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  background-color: rgba(251, 251, 251, 0.8);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--color-border);
-  height: var(--sticky-nav-height);
-  transition: all 0.3s ease;
-}
-
-/* Shadow appears when sticky (scrolled) */
-.sticky-nav.is-sticky {
-  box-shadow: var(--shadow-sticky);
-}
-
-.sticky-container {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.sticky-nav-list {
-  display: flex;
-  list-style: none;
-  gap: var(--space-xs);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* Firefox */
-  width: 100%;
-}
-
-.sticky-nav-list::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
-}
-
-.sticky-nav-item {
-  flex-shrink: 0;
-}
-
-.sticky-nav-link {
-  display: block;
-  padding: 0.6rem 1.25rem;
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--color-text-light);
-  border-radius: 100px;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-}
-
-.sticky-nav-link:hover {
-  color: var(--color-primary);
-  background-color: var(--color-border);
-}
-
-.sticky-nav-link.is-active {
-  color: var(--color-accent);
-  background-color: var(--color-surface);
-  box-shadow: var(--shadow-sm);
-}
+/* Sticky Nav removed and unified into Main Header */
 
 /* ─────────────────────────────────────────
    MAIN CONTENT
    ───────────────────────────────────────── */
 
 .layout-main {
-  min-height: calc(100vh - var(--header-height) - var(--sticky-nav-height) - 100px);
+  min-height: calc(100vh - var(--header-height) - 100px);
 }
 
 /* ─────────────────────────────────────────

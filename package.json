@@ -5,7 +5,7 @@
   "scripts": {
     "build": "npx @11ty/eleventy",
     "start": "npx @11ty/eleventy --serve --watch",
-    "admin": "npx http-server ./admin -p 8081",
+    "admin": "npx http-server ./admin -p 8081 -c-1",
     "debug": "DEBUG=* npx @11ty/eleventy"
   },
   "keywords": [

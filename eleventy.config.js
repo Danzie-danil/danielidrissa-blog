@@ -23,6 +23,7 @@ module.exports = function(eleventyConfig) {
   // Static assets
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/css");
+  eleventyConfig.addPassthroughCopy({ "src/assets/favicon.svg": "favicon.svg" });
 
   // ─────────────────────────────────────────
   // COLLECTIONS

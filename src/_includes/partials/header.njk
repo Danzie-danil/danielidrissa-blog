@@ -7,8 +7,12 @@
 
     <!-- Navigation -->
     <nav class="main-nav" aria-label="Main navigation">
-      <a href="/" class="nav-link {% if page.url == '/' %}is-active{% endif %}">Home</a>
-      <a href="/about/" class="nav-link {% if page.url == '/about/' %}is-active{% endif %}">About</a>
+      <a href="/" class="nav-link{% if page.url == '/' %} is-active{% endif %}">Home</a>
+      <a href="/about/" class="nav-link{% if page.url == '/about/' %} is-active{% endif %}">About</a>
+      <a href="/sermons/" class="nav-link{% if page.url == '/sermons/' or page.url | startsWith('/sermons/') %} is-active{% endif %}">Sermons</a>
+      <a href="/videos/" class="nav-link{% if page.url == '/videos/' or page.url | startsWith('/videos/') %} is-active{% endif %}">Videos</a>
+      <a href="/audio/" class="nav-link{% if page.url == '/audio/' or page.url | startsWith('/audio/') %} is-active{% endif %}">Audio</a>
+      <a href="/images/" class="nav-link{% if page.url == '/images/' or page.url | startsWith('/images/') %} is-active{% endif %}">Images</a>
     </nav>
 
     <!-- Quick Action Tools -->
